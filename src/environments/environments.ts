@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    host: process.env['_API_URL'] || '',
-    clientId :process.env['_CLIENT_ID'] ||''
+    host: 'https://secret-sharing-backend.vercel.app' ,
+    clientId: '1004074720628-kpffpjl3jt5msckvftv4cv4cju4s2rlf.apps.googleusercontent.com'
   };
