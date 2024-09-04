@@ -1,6 +1,6 @@
 declare var google: any;
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { AlertService } from '../../Services/alert/alert.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { UserService } from '../../Services/user/user.service';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
