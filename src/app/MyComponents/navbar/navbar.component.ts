@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { UserService } from '../../Services/user/user.service';
 import { gUserService } from '../../Services/gUser/g-user.service';
+import { AlertService } from '../../Services/alert/alert.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private userService: UserService, private cdr: ChangeDetectorRef, private gUserService: gUserService,) {
+  constructor(private router: Router, private userService: UserService, private gUserService: gUserService, private alertService: AlertService) {
 
 
   }
@@ -27,13 +28,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userService.user$.subscribe(user => {
       this.user = user;
-
     });
 
     this.gUserService.getGUser().subscribe(gUser => {
       this.gUser = gUser;
-      // Mark for check if using OnPush change detection
-      this.cdr.markForCheck();
     });
     this.router.events.subscribe(() => {
       this.isLoginRoute = this.router.url === '/login';
@@ -49,8 +47,8 @@ export class NavbarComponent implements OnInit {
     this.user = null;
     this.gUser = null;
     this.gUserService.setGUser(null);
-    this.cdr.detectChanges();
     this.router.navigate(['/login']);
+    this.alertService.showAlert('logged out','success')
   }
 
 

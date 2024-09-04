@@ -1,6 +1,5 @@
-  @if (alert) {<div style="height: 50px;">
-    <div  class="alert alert-danger alert-dismissible fade show" [ngClass]="error ? 'alert-danger' : 'alert-sucess' ">
-      <strong>{{alert.type}}</strong> : {{alert.msg}}
-    </div>
-  </div>}
-
+@if (alert) { <div style="height: 50px;">
+  <div class="alert alert-danger alert-dismissible fade show" [ngClass]="error ? 'alert-danger' : 'alert-sucess' ">
+    <strong>{{alert.type}}</strong> : {{alert.msg}}
+  </div>
+</div> }

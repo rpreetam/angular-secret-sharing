@@ -10,14 +10,17 @@ export class AlertService {
 
   alert$ = this.alertSource.asObservable();
   error$ = this.errorSource.asObservable();
-  showAlert( msg: string, type: string){
-    if (type === 'Error'){
+  showAlert(msg: string, type: string) {
+    if (type === 'Error') {
       this.errorSource.next(true);
     }
-    this.alertSource.next( {msg, type});
+    this.alertSource.next({ msg, type });
     setTimeout(() => {
-      this.alertSource.next( undefined);
-    }, 4000);
+      this.alertSource.next(undefined);
+      this.errorSource.next(false);
+    }, 800);
+
 
   }
+
 }

@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddSecretComponent {
   secret = '';
-  constructor(private secretService: SecretService) {}
+  constructor(private secretService: SecretService) { }
 
   handleClick() {
     if (this.secret.length >= 5) {

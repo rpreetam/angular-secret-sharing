@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       client_id: environment.clientId,
       callback: (res: any) => {
         this.handleGoogleLogin(res);
-
       }
     });
 
@@ -62,12 +61,17 @@ export class LoginComponent implements OnInit {
       //store in localstorage
       localStorage.setItem("gUser", JSON.stringify(payLoad));
 
-      // set alert for success
-      this.alertService.showAlert('Logged in Successfully', 'success');
+      this.alertService.showAlert('Logged in successfully with Google', 'success');
 
-      //nevigate to home
+
+      // Navigate to home
       this.router.navigate(['/']);
+
+    } else {
+      // Handle the case where the response is null or invalid
+      this.alertService.showAlert('Google login failed. Please try again.', 'error');
     }
+
   }
 
 
@@ -98,7 +102,7 @@ export class LoginComponent implements OnInit {
         this.alertService.showAlert('Logged in Successfully', 'success');
         this.router.navigate(['/']);
         this.userService.getUser();
-      }  else {
+      } else {
         this.alertService.showAlert(json.message || 'Invalid credentials', 'Error');
       }
     } catch (error) {

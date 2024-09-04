@@ -5,5 +5,5 @@ import { AlertService } from './Services/alert/alert.service';
 import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [{ provide: AlertService },provideHttpClient(),{ provide: AlertService },provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [provideHttpClient(), provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
 };
